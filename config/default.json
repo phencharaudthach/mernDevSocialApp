@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://master_rotcennocved:XMEC8OFxiX1tMjKU@devconnector-sai52.mongodb.net/devsocial?retryWrites=true&w=majority",
+  "jwtSecret": "testsecretoken"
+}

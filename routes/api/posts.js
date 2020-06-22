@@ -22,12 +22,12 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('-password');
 
-      const newPost = {
+      const newPost = new Post({
         text: req.body.text,
         name: user.name,
         avatar: user.avatar,
         user: req.user.id,
-      };
+      });
 
       const post = await newPost.save();
       res.json(post);
@@ -45,7 +45,7 @@ router.post(
 router.get('/', auth, async (req, res) => {
   try {
     const post = await Post.find().sort({ date: -1 });
-    res.json(posts);
+    res.json(post);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -56,7 +56,7 @@ router.get('/', auth, async (req, res) => {
 //@desc   GET post by ID
 //@access Private
 
-router.get('/', auth, async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
@@ -73,7 +73,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-//@route  DELETE api/posts:id
+//@route  DELETE api/posts/:id
 //@desc   Delete a post
 //@access Private
 

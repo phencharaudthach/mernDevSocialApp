@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator/check');
 const auth = require('../../middleware/auth');
 
 const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 //@route  POST api/posts
@@ -172,7 +171,7 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select('-password');
-      const post = await Post.findById(req.param.id);
+      const post = await Post.findById(req.params.id);
 
       const newComment = {
         text: req.body.text,

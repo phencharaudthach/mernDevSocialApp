@@ -29,7 +29,7 @@ const PostItem = ({
         <Fragment>
           {' '}
           <button
-            onClick={(e) => addLike(_id)}
+            onClick={() => addLike(_id)}
             type='button'
             class='btn btn-light'
           >
@@ -37,7 +37,7 @@ const PostItem = ({
             {likes.length > 0 && <span>{likes.length}</span>}
           </button>
           <button
-            onClick={(e) => removeLike(_id)}
+            onClick={() => removeLike(_id)}
             type='button'
             class='btn btn-light'
           >
